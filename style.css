@@ -117,7 +117,10 @@
 
  /* CONTACT FORM */
  form {
-     max-width: 500px;
+
+     max-width: 600px;
+     /* 500 se 800 kar diya */
+     width: 100%;
      margin: auto;
      display: flex;
      flex-direction: column;
