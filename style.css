@@ -46,7 +46,7 @@
   /* HERO */
 
   .hero {
-      height: 75vh;
+      height: 60vh;
       /* Half screen height */
       background: linear-gradient(rgba(13, 27, 42, 0.7), rgba(13, 27, 42, 0.7)),
           url('bg.jpg');
