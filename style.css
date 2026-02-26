@@ -46,7 +46,7 @@
   /* HERO */
 
   .hero {
-      height: 90vh;
+      height: 75vh;
       /* Half screen height */
       background: linear-gradient(rgba(13, 27, 42, 0.7), rgba(13, 27, 42, 0.7)),
           url('bg.jpg');
@@ -240,14 +240,23 @@
       }
   }
 
-  /* HERO BUTTON FIX FOR MOBILE */
+  /* FIX HERO BUTTONS MOBILE */
+  .hero .btn {
+      display: inline-block;
+      margin: 8px;
+  }
+
   @media(max-width:768px) {
+
+      .hero {
+          min-height: auto;
+          padding: 120px 20px 40px;
+      }
 
       .hero .btn {
           display: block;
           width: 90%;
-          margin: 10px auto;
-          text-align: center;
+          margin: 12px auto;
       }
 
   }
