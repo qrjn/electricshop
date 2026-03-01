@@ -9,16 +9,24 @@ document.getElementById("contactForm").addEventListener("submit", function (e) {
 
     let name = document.getElementById("name").value;
     let phone = document.getElementById("phone").value;
+    let service = document.getElementById("service").value;
     let message = document.getElementById("message").value;
 
-    if (name === "" || phone === "" || message === "") {
-        alert("Please fill all fields!");
-    } else {
-        alert("Thank You! We will contact you soon.");
-        this.reset();
+    if (name === "" || phone === "" || service === "") {
+        alert("Please fill required fields!");
+        return;
     }
-});
 
+    let whatsappMessage = `Hello RAJ ELECTRONICS,%0A
+Name: ${name}%0A
+Phone: ${phone}%0A
+Service: ${service}%0A
+Problem: ${message}`;
+
+    window.open(`https://wa.me/918409723243?text=${whatsappMessage}`, "_blank");
+
+    this.reset();
+});
 // Scroll Animation
 window.addEventListener("scroll", function () {
     let cards = document.querySelectorAll(".card");
