@@ -1,4 +1,4 @@
-// Dark Mode Toggle
+ // Dark Mode Toggle
 document.getElementById("darkBtn").onclick = function () {
     document.body.classList.toggle("dark");
 };
@@ -38,3 +38,5 @@ window.addEventListener("scroll", function () {
         }
     });
 });
+let productMsg = `Hello, I want to buy LED Bulb`;
+window.open(`https://wa.me/918409723243?text=${productMsg}`);

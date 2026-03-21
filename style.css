@@ -1,4 +1,4 @@
-  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+   @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
 
   * {
       margin: 0;
@@ -27,7 +27,7 @@
   }
 
   .logo {
-      font-size: 20px;
+      font-size: 30;
       font-weight: 600;
   }
 
@@ -178,9 +178,8 @@
   }
 
   .whatsapp:hover {
-      transform: scale(1.1);
+      transform: scale(2.2);
   }
-
   /* Pulse Animation */
   @keyframes pulse {
       0% {
@@ -223,7 +222,14 @@
   .dark footer {
       background: #000;
   }
-
+   .faq-answer {
+    display: none;
+    padding: 10px;
+    background: #f1f1f1;
+}
+.dark .faq-answer {
+    background: #333;
+}
   /* RESPONSIVE */
   @media(max-width: 768px) {
       header {
@@ -243,7 +249,7 @@
           padding: 50px 20px;
       }
   }
-
+ 
   /* FIX HERO BUTTONS MOBILE */
   .hero .btn {
       display: inline-block;
@@ -264,3 +270,4 @@
       }
 
   }
+ 
