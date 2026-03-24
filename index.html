@@ -1,145 +1,850 @@
  <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <title>RAJ ELECTRONICS REPAIR & SERVICE | Mahua</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="Inverter, Stabilizer, LED TV, Fan and all electronics repair service in Mahua Muzaffarpur Road near Government Hospital. 20 years experience.">
-    <link rel="stylesheet" href="style.css">
-</head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RAJ ELECTRONICS — Repair & Service | Mahua</title>
+<meta name="description" content="Expert electronics repair — Inverter, Stabilizer, LED TV, Fan. 20 years trusted service in Mahua, Muzaffarpur Road.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;600;700&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --spark: #FF6B00;
+  --spark-hot: #FFB300;
+  --carbon: #0C0C0C;
+  --carbon-2: #141414;
+  --carbon-3: #1C1C1C;
+  --steel: #2A2A2A;
+  --steel-light: #3D3D3D;
+  --text-bright: #F5F5F5;
+  --text-dim: #888;
+  --text-muted: #555;
+}
 
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Barlow', sans-serif;
+  background: var(--carbon);
+  color: var(--text-bright);
+  overflow-x: hidden;
+}
+
+::selection { background: var(--spark); color: #000; }
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--carbon); }
+::-webkit-scrollbar-thumb { background: var(--spark); }
+
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background-image:
+    radial-gradient(circle at 20% 50%, rgba(255,107,0,0.06) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(255,179,0,0.04) 0%, transparent 40%),
+    linear-gradient(rgba(255,107,0,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,107,0,0.025) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 30px 30px, 30px 30px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* HEADER */
+header {
+  position: fixed; top: 0; left: 0; right: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 5%;
+  height: 64px;
+  background: rgba(12,12,12,0.95);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255,107,0,0.15);
+}
+
+header::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--spark), var(--spark-hot), var(--spark), transparent);
+  animation: scanline 3s linear infinite;
+}
+@keyframes scanline { 0%{opacity:0.3} 50%{opacity:1} 100%{opacity:0.3} }
+
+.logo {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 24px;
+  letter-spacing: 4px;
+  color: var(--text-bright);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+.logo-bolt {
+  width: 24px; height: 24px;
+  background: var(--spark);
+  clip-path: polygon(60% 0%, 100% 0%, 40% 50%, 80% 50%, 0% 100%, 30% 55%, 0% 55%);
+  animation: boltPulse 2s ease-in-out infinite;
+  flex-shrink: 0;
+}
+@keyframes boltPulse {
+  0%,100%{filter:drop-shadow(0 0 6px var(--spark))}
+  50%{filter:drop-shadow(0 0 14px var(--spark-hot))}
+}
+.logo em { color: var(--spark); font-style: normal; }
+
+nav { display: flex; align-items: center; gap: 4px; }
+nav a {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  text-decoration: none;
+  padding: 7px 12px;
+  border: 1px solid transparent;
+  border-radius: 2px;
+  transition: all 0.25s;
+}
+nav a:hover { color: var(--spark); border-color: rgba(255,107,0,0.3); background: rgba(255,107,0,0.06); }
+#themeBtn {
+  background: rgba(255,107,0,0.1);
+  border: 1px solid rgba(255,107,0,0.3);
+  color: var(--spark);
+  width: 34px; height: 34px;
+  border-radius: 2px;
+  cursor: pointer;
+  font-size: 15px;
+  display: flex; align-items:center; justify-content:center;
+  transition: 0.3s;
+  margin-left: 6px;
+}
+#themeBtn:hover { background: rgba(255,107,0,0.2); }
+.nav-call {
+  color: #000 !important;
+  background: var(--spark) !important;
+  border-color: var(--spark) !important;
+}
+.nav-call:hover { background: var(--spark-hot) !important; transform: translateY(-1px); }
+
+/* HERO */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  padding: 100px 5% 60px;
+}
+.hero-bg {
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(105deg, rgba(12,12,12,0.96) 40%, rgba(12,12,12,0.55) 100%),
+    url('bg.jpg') center/cover no-repeat;
+  z-index: 0;
+}
+.sparks { position: absolute; inset: 0; pointer-events: none; z-index: 1; }
+.spark-dot {
+  position: absolute;
+  background: var(--spark-hot);
+  border-radius: 50%;
+  animation: sparkFloat var(--dur) linear infinite;
+  opacity: 0;
+}
+@keyframes sparkFloat {
+  0%{transform:translate(0,0) scale(1);opacity:0}
+  10%{opacity:1}
+  90%{opacity:0.6}
+  100%{transform:translate(var(--tx),var(--ty)) scale(0);opacity:0}
+}
+.hero-content { position: relative; z-index: 2; max-width: 720px; }
+
+.hero-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 12px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--spark);
+  margin-bottom: 22px;
+  opacity: 0;
+  animation: slideIn 0.7s ease 0.2s forwards;
+}
+.hero-tag::before { content:''; width:28px; height:1px; background:var(--spark); }
+.hero-tag::after { content:''; width:7px; height:7px; background:var(--spark); border-radius:50%; animation:blink 1s infinite; }
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.2} }
+
+.hero h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(52px, 9vw, 116px);
+  line-height: 0.92;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--text-bright);
+  opacity: 0;
+  animation: slideIn 0.8s ease 0.35s forwards;
+}
+.hero h1 .line-fire { color: var(--spark); display: block; text-shadow: 0 0 40px rgba(255,107,0,0.35); }
+.hero h1 .line-ghost { -webkit-text-stroke: 1px rgba(255,255,255,0.2); color: transparent; display: block; }
+
+.hero-sub {
+  font-size: 15px;
+  font-weight: 300;
+  color: var(--text-dim);
+  line-height: 1.8;
+  max-width: 460px;
+  margin: 24px 0 38px;
+  border-left: 2px solid var(--spark);
+  padding-left: 16px;
+  opacity: 0;
+  animation: slideIn 0.8s ease 0.5s forwards;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  opacity: 0;
+  animation: slideIn 0.8s ease 0.65s forwards;
+}
+
+@keyframes slideIn { from{opacity:0;transform:translateY(28px)} to{opacity:1;transform:translateY(0)} }
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 14px 26px;
+  border-radius: 2px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.25s;
+  position: relative;
+  overflow: hidden;
+}
+.btn-fire { background: var(--spark); color: #000; box-shadow: 0 0 0 0 rgba(255,107,0,0.4); }
+.btn-fire:hover { background: var(--spark-hot); box-shadow: 0 0 28px rgba(255,107,0,0.5); transform: translateY(-2px); }
+.btn-wire { background: transparent; color: var(--text-bright); border: 1px solid var(--steel-light); }
+.btn-wire:hover { border-color: var(--spark); color: var(--spark); transform: translateY(-2px); }
+.btn-ghost { background: transparent; color: var(--text-dim); border: 1px solid var(--steel); font-size: 13px; padding: 12px 20px; }
+.btn-ghost:hover { border-color: rgba(255,107,0,0.35); color: var(--spark); }
+
+.hero-stats {
+  position: absolute;
+  right: 5%; top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  z-index: 2;
+  opacity: 0;
+  animation: slideIn 0.8s ease 0.8s forwards;
+}
+.hero-stat {
+  padding: 22px 28px;
+  border-left: 3px solid rgba(255,107,0,0.25);
+  text-align: right;
+  transition: 0.3s;
+}
+.hero-stat:hover { border-left-color: var(--spark); background: rgba(255,107,0,0.04); }
+.hero-stat-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 50px;
+  color: var(--spark);
+  line-height: 1;
+  text-shadow: 0 0 20px rgba(255,107,0,0.3);
+}
+.hero-stat-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+/* TICKER */
+.ticker {
+  background: var(--spark);
+  overflow: hidden;
+  white-space: nowrap;
+  padding: 10px 0;
+  position: relative; z-index: 1;
+}
+.ticker-inner { display: inline-block; animation: ticker 22s linear infinite; }
+.ticker span {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 13px; font-weight: 700;
+  letter-spacing: 3px; text-transform: uppercase;
+  color: #000; margin: 0 36px;
+}
+.ticker span::before { content: '⚡ '; }
+@keyframes ticker { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+
+/* SECTIONS */
+section { position: relative; z-index: 1; }
+.section-tag {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 11px; letter-spacing: 4px;
+  text-transform: uppercase; color: var(--spark);
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 10px;
+}
+.section-tag::before { content:''; width:18px; height:1px; background:var(--spark); }
+.section-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(34px, 5vw, 58px);
+  letter-spacing: 3px; text-transform: uppercase;
+  color: var(--text-bright); line-height: 1;
+}
+.section-header {
+  margin-bottom: 52px;
+  display: flex; align-items: flex-end;
+  justify-content: space-between; flex-wrap: wrap; gap: 20px;
+}
+
+/* SERVICES */
+#services { padding: 100px 5%; background: var(--carbon-2); }
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 2px;
+}
+.service-card {
+  background: var(--carbon);
+  border: 1px solid var(--steel);
+  padding: 34px 26px;
+  position: relative; overflow: hidden;
+  transition: all 0.3s;
+  opacity: 0; transform: translateY(20px);
+}
+.service-card.visible {
+  opacity: 1; transform: translateY(0);
+  transition: opacity 0.5s ease, transform 0.5s ease, background 0.3s, border-color 0.3s, box-shadow 0.3s;
+}
+.service-card::before {
+  content: attr(data-num);
+  position: absolute; top:14px; right:18px;
+  font-family: 'Bebas Neue', sans-serif; font-size: 46px;
+  color: rgba(255,107,0,0.06); line-height:1;
+  pointer-events: none; transition: 0.3s;
+}
+.service-card:hover::before { color: rgba(255,107,0,0.12); }
+.service-card::after {
+  content: '';
+  position: absolute; bottom:0; left:0; right:0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--spark), var(--spark-hot));
+  transform: scaleX(0); transform-origin: left; transition: 0.4s;
+}
+.service-card:hover::after { transform: scaleX(1); }
+.service-card:hover {
+  background: var(--carbon-3);
+  border-color: rgba(255,107,0,0.28);
+  transform: translateY(-5px) !important;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.5), 0 0 25px rgba(255,107,0,0.07);
+}
+.svc-icon { font-size: 36px; margin-bottom: 18px; display: block; }
+.svc-name {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 19px; font-weight: 700;
+  letter-spacing: 1px; text-transform: uppercase;
+  color: var(--text-bright); margin-bottom: 7px;
+}
+.svc-desc { font-size: 13px; color: var(--text-muted); line-height: 1.65; }
+.svc-arrow {
+  display: inline-block; margin-top: 18px;
+  color: var(--spark); font-size: 18px;
+  transform: translateX(0); transition: 0.3s;
+}
+.service-card:hover .svc-arrow { transform: translateX(6px); }
+
+/* WHY */
+#why { padding: 100px 5%; background: var(--carbon); }
+.why-panels {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2px;
+}
+.why-panel {
+  padding: 46px 38px;
+  border: 1px solid var(--steel);
+  background: var(--carbon-2);
+  position: relative; overflow: hidden; transition: 0.3s;
+}
+.why-panel:hover { background: var(--carbon-3); border-color: rgba(255,107,0,0.22); }
+.why-panel-accent {
+  position: absolute; top:0; left:0;
+  width: 3px; height: 0;
+  background: var(--spark); transition: height 0.5s ease;
+}
+.why-panel:hover .why-panel-accent { height: 100%; }
+.why-bg-num {
+  position: absolute; bottom:16px; right:18px;
+  font-family: 'Bebas Neue', sans-serif; font-size: 80px;
+  color: rgba(255,107,0,0.06); line-height:1; pointer-events:none;
+}
+.why-icon { font-size: 30px; margin-bottom: 14px; display: block; }
+.why-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 22px; font-weight: 700;
+  letter-spacing: 1px; text-transform: uppercase;
+  color: var(--text-bright); margin-bottom: 10px;
+}
+.why-desc { font-size: 14px; color: var(--text-muted); line-height: 1.75; max-width: 280px; }
+
+/* REVIEWS */
+#reviews { padding: 100px 5%; background: var(--carbon-2); }
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  gap: 14px;
+}
+.review-card {
+  background: var(--carbon);
+  border: 1px solid var(--steel);
+  padding: 30px; border-radius: 2px;
+  position: relative; overflow: hidden; transition: 0.3s;
+  opacity: 0; transform: translateY(20px);
+}
+.review-card.visible {
+  opacity: 1; transform: translateY(0);
+  transition: opacity 0.5s ease, transform 0.5s ease, border-color 0.3s;
+}
+.review-card:hover { border-color: rgba(255,107,0,0.28); }
+.review-tape {
+  position: absolute; top:13px; right:-16px;
+  background: var(--spark); color: #000;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 10px; font-weight: 700; letter-spacing: 2px;
+  padding: 3px 26px; transform: rotate(25deg);
+}
+.review-stars { color: var(--spark-hot); font-size: 15px; margin-bottom: 14px; }
+.review-text {
+  font-size: 14px; font-style: italic;
+  color: #999; line-height: 1.8; margin-bottom: 18px;
+}
+.review-name {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700; font-size: 15px;
+  letter-spacing: 1px; text-transform: uppercase; color: var(--text-dim);
+}
+.review-name::before { content:'— '; color:var(--spark); }
+
+/* CONTACT */
+#contact {
+  padding: 100px 5%;
+  background: var(--carbon);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+.contact-info-blocks { margin-top: 34px; display: flex; flex-direction: column; }
+.info-block {
+  padding: 22px 0;
+  border-bottom: 1px solid var(--steel);
+  display: flex; align-items: flex-start; gap: 16px;
+}
+.info-icon {
+  width: 38px; height: 38px;
+  background: rgba(255,107,0,0.1);
+  border: 1px solid rgba(255,107,0,0.2);
+  border-radius: 2px;
+  display: flex; align-items:center; justify-content:center;
+  font-size: 17px; flex-shrink: 0;
+}
+.info-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 11px; letter-spacing: 3px;
+  text-transform: uppercase; color: var(--spark); margin-bottom: 4px;
+}
+.info-val { font-size: 14px; color: var(--text-bright); font-weight: 500; line-height: 1.5; }
+.big-call {
+  display: inline-flex; align-items: center; gap: 10px;
+  margin-top: 34px; padding: 18px 30px;
+  background: var(--spark); color: #000;
+  font-family: 'Bebas Neue', sans-serif; font-size: 26px; letter-spacing: 3px;
+  text-decoration: none; border-radius: 2px; transition: 0.3s;
+  box-shadow: 0 0 36px rgba(255,107,0,0.28);
+}
+.big-call:hover { background: var(--spark-hot); transform: translateY(-3px); box-shadow: 0 0 55px rgba(255,179,0,0.4); }
+
+.contact-form-wrap {
+  background: var(--carbon-2);
+  border: 1px solid var(--steel);
+  padding: 40px;
+}
+.contact-form-wrap h3 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 28px; letter-spacing: 3px; margin-bottom: 26px;
+}
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; }
+.form-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 11px; letter-spacing: 3px;
+  text-transform: uppercase; color: var(--text-muted);
+}
+.form-input {
+  padding: 13px 15px;
+  background: var(--carbon);
+  border: 1px solid var(--steel);
+  border-radius: 2px;
+  color: var(--text-bright);
+  font-family: 'Barlow', sans-serif; font-size: 14px;
+  transition: 0.3s; width: 100%;
+}
+.form-input::placeholder { color: var(--text-muted); }
+.form-input:focus {
+  outline: none; border-color: var(--spark);
+  background: rgba(255,107,0,0.03);
+  box-shadow: 0 0 0 3px rgba(255,107,0,0.07);
+}
+.form-input option { background: var(--carbon-2); }
+.form-submit {
+  width: 100%; padding: 16px;
+  background: var(--spark); color: #000;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 20px; letter-spacing: 4px;
+  border: none; border-radius: 2px; cursor: pointer;
+  transition: 0.3s; margin-top: 6px;
+  box-shadow: 0 0 28px rgba(255,107,0,0.2);
+}
+.form-submit:hover { background: var(--spark-hot); transform: translateY(-2px); box-shadow: 0 0 46px rgba(255,179,0,0.35); }
+
+/* FAQ */
+#faq { padding: 100px 5%; background: var(--carbon-2); }
+.faq-list { max-width: 780px; }
+.faq-item { border-bottom: 1px solid var(--steel); overflow: hidden; }
+.faq-q {
+  width: 100%; background: none; border: none;
+  padding: 22px 0; color: var(--text-bright);
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 18px; font-weight: 600; letter-spacing: 0.5px;
+  cursor: pointer;
+  display: flex; justify-content: space-between; align-items: center;
+  text-align: left; gap: 20px; transition: color 0.25s;
+}
+.faq-q:hover { color: var(--spark); }
+.faq-toggle {
+  width: 28px; height: 28px;
+  background: rgba(255,107,0,0.1);
+  border: 1px solid rgba(255,107,0,0.2);
+  border-radius: 2px;
+  display: flex; align-items:center; justify-content:center;
+  color: var(--spark); font-size: 20px; flex-shrink: 0; transition: 0.3s;
+}
+.faq-q.open .faq-toggle { background: var(--spark); color: #000; transform: rotate(45deg); }
+.faq-a { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+.faq-a-inner {
+  padding: 0 0 20px;
+  font-size: 14px; color: var(--text-muted); line-height: 1.8;
+}
+
+/* FOOTER */
+footer {
+  background: var(--carbon);
+  border-top: 1px solid var(--steel);
+  padding: 36px 5%;
+  position: relative; z-index: 1;
+  display: flex; align-items: center;
+  justify-content: space-between; flex-wrap: wrap; gap: 14px;
+}
+.footer-logo {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 19px; letter-spacing: 4px; color: var(--text-bright);
+}
+.footer-logo em { color: var(--spark); font-style: normal; }
+.footer-copy { font-size: 12px; color: var(--text-muted); letter-spacing: 0.5px; }
+.footer-links { display: flex; gap: 18px; }
+.footer-links a {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 12px; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--text-muted); text-decoration: none; transition: 0.25s;
+}
+.footer-links a:hover { color: var(--spark); }
+
+/* WHATSAPP */
+.wa-float {
+  position: fixed; bottom: 26px; right: 26px;
+  z-index: 9998;
+  width: 56px; height: 56px;
+  background: #25D366; border-radius: 50%;
+  display: flex; align-items:center; justify-content:center;
+  font-size: 26px; text-decoration: none;
+  animation: waPulse 2s infinite; transition: transform 0.3s;
+}
+.wa-float:hover { transform: scale(1.1); }
+@keyframes waPulse {
+  0%{box-shadow:0 0 0 0 rgba(37,211,102,0.5)}
+  70%{box-shadow:0 0 0 16px rgba(37,211,102,0)}
+  100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  header { padding: 0 20px; }
+  nav a:not(.nav-call):not(#themeBtn) { display: none; }
+  .hero { padding: 88px 20px 60px; flex-direction: column; }
+  .hero-stats { position: static; transform: none; flex-direction: row; flex-wrap: wrap; gap: 0; margin-top: 40px; }
+  .hero-stat { text-align: center; border-left: none; border-top: 1px solid rgba(255,107,0,0.2); padding: 16px 20px; }
+  .hero h1 { font-size: 52px; }
+  .hero-actions { flex-direction: column; }
+  .hero-actions .btn { width: 100%; justify-content: center; }
+  #contact { grid-template-columns: 1fr; padding: 80px 20px; gap: 48px; }
+  .form-row { grid-template-columns: 1fr; }
+  .why-panels { grid-template-columns: 1fr; }
+  .services-grid { grid-template-columns: 1fr 1fr; }
+  section { padding: 80px 20px !important; }
+  footer { flex-direction: column; align-items: flex-start; }
+}
+@media (max-width: 560px) {
+  .services-grid { grid-template-columns: 1fr; }
+  .hero h1 { font-size: 42px; }
+  .contact-form-wrap { padding: 26px 18px; }
+}
+</style>
+</head>
 <body>
 
-    <header>
-        <div class="logo">⚡ RAJ ELECTRONICS</div>
-        <nav>
-            <a href="#">Home</a>
-            <a href="#services">Services</a>
-            <a href="#contact">Contact</a>
-            <button id="darkBtn">🌙</button>
-        </nav>
-    </header>
-    <!-- Hero -->
-    <section class="hero">
-        <h1>RAJ ELECTRONICS REPAIR & SERVICE</h1>
-        <p> 20 Years of Trusted Experience in Electronics Repair</p>
+<header>
+  <a href="#" class="logo">
+    <div class="logo-bolt"></div>
+    RAJ <em>ELECTRONICS</em>
+  </a>
+  <nav>
+    <a href="#services">Services</a>
+    <a href="#why">Why Us</a>
+    <a href="#reviews">Reviews</a>
+    <a href="#faq">FAQ</a>
+    <a href="tel:8409723243" class="nav-call">📞 Call Now</a>
+    <button id="themeBtn">🌙</button>
+  </nav>
+</header>
 
-
-        <a href="#contact" class="btn">🏠 Book Home Service</a>
-        <a href="https://www.google.com/maps/search/?api=1&query=RAJ+ELECTRONICS+Mahua+Muzaffarpur+Road+Near+Government+Hospital"
-            target="_blank" class="btn shop-btn">
-            🏪 Visit Our Shop
-        </a>
-        <a href="tel:8409723243" class="btn">📞 Call Now: 8409723243</a>
-    </section>
-    <!-- Services -->
-    <section id="services">
-        <h2>Our Services</h2>
-        <div class="cards">
-            <div class="card">🔋 Inverter Repair & Installation</div>
-            <div class="card">⚡ Stabilizer Repair</div>
-            <div class="card">📺 LED / LCD TV Repair</div>
-            <div class="card">🌀 Ceiling / Table / Exhaust Fan Repair</div>
-            <div class="card">🔌 Wiring & Electrical Fault Repair</div>
-            <div class="card">🔋 Battery Replacement Service</div>
-            <div class="card">⚙ Power Supply Repair</div>
-            <div class="card">🛠 Home Appliance Repair</div>
-            <div class="card">💡 LED Bulb & Light Repair</div>
-            <div class="card">🏠 Doorstep Home Service</div>
-        </div>
-    </section>
-    <section>
-        <h2>What Our Customers Say</h2>
-        <div class="cards">
-            <div class="card">
-                ⭐⭐⭐⭐⭐
-                <p>Best inverter repair service in Mahua.</p>
-                <strong>- Rakesh Kumar</strong>
-            </div>
-            <div class="card">
-                ⭐⭐⭐⭐⭐
-                <p>Very fast fan repair service.</p>
-                <strong>- Amit Singh</strong>
-        </div>
-            <div class="card">
-                ⭐⭐⭐⭐⭐
-                <p>Excellent LED TV repair service.</p>
-                <strong>- Priya Sharma</strong>
-            </div>
-            <div class="card">
-                ⭐⭐⭐⭐⭐
-                <p>  भाई बहुत अच्छा काम किया है</p>
-                <strong>-Rahul Roy</strong>
-            </div>
-        </div>
-
-    </section>
-
-    <!-- Experience -->
-    <section>
-        <h2>Why Choose Us?</h2>
-        <p>✔ 20 Years of Experience</p>
-        <p>✔ Trusted by Local Customers</p>
-        <p>✔ Fast & Reliable Service</p>
-        <p>✔ Affordable Pricing</p>
-        ----------------------------------
-        ----------------------------------
-
-        <p style="margin-top:20px;">
-            We provide complete electronics repair solutions with genuine parts,
-            advanced tools and fast doorstep service in Mahua.
-        </p>
-    </section>
-
-    <!-- Contact -->
-    <section id="contact">
-        <h2>Contact Us</h2>
-        <p>📍 Mahua Muzaffarpur Road, Near Government Hospital</p>
-        <p>📞 Phone: 8409723243</p>
-
-        </form>
-        <form id="contactForm">
-
-            <input type="text" id="name" placeholder="Your Name" required>
-            <input type="tel" id="phone" placeholder="Your Phone" required>
-
-            <select id="serviceType" required>
-                <option value="">Select Service Type</option>
-                <option>Home Service</option>
-            </select>
-
-            <select id="service" required>
-                <option value="">Select Problem</option>
-                <option>Fan Repair</option>
-                <option>Inverter Repair</option>
-                <option>LED TV Repair</option>
-                <option>Stabilizer Repair</option>
-                <option>Other Electronics</option>
-            </select>
-
-            <input type="text" id="address" placeholder="Full Address (Only for Home Service)">
-
-            <textarea id="message" placeholder="Describe Your Problem"></textarea>
-
-            <button type="submit">Submit Request</button>
-
-        </form>
-    </section>
-<section id="faq">
-    <h2>Frequently Asked Questions</h2>
-    <div class="faq-item">
-        <button class="faq-question">Do you provide home service?</button>
-        <div class="faq-answer">Yes, we provide home service within 10km of Mahua.</div>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="sparks" id="sparks"></div>
+  <div class="hero-content">
+    <div class="hero-tag">Mahua · Muzaffarpur Road · Est. 2005</div>
+    <h1>
+      <span class="line-fire">Repair.</span>
+      <span>Restore.</span>
+      <span class="line-ghost">Reliable.</span>
+    </h1>
+    <p class="hero-sub">
+      Expert electronics repair for inverters, stabilizers, LED TVs, fans &amp; home appliances —
+      with 20 years of trusted service and doorstep support across Mahua.
+    </p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn btn-fire">🏠 Book Home Service</a>
+      <a href="https://www.google.com/maps/search/?api=1&query=RAJ+ELECTRONICS+Mahua+Muzaffarpur+Road+Near+Government+Hospital" target="_blank" class="btn btn-wire">📍 Find Our Shop</a>
+      <a href="https://wa.me/918409723243" target="_blank" class="btn btn-ghost">💬 WhatsApp Us</a>
     </div>
+  </div>
+  <div class="hero-stats">
+    <div class="hero-stat"><div class="hero-stat-num">20+</div><div class="hero-stat-label">Years Experience</div></div>
+    <div class="hero-stat"><div class="hero-stat-num">5K+</div><div class="hero-stat-label">Happy Customers</div></div>
+    <div class="hero-stat"><div class="hero-stat-num">10</div><div class="hero-stat-label">Services</div></div>
+    <div class="hero-stat"><div class="hero-stat-num">1D</div><div class="hero-stat-label">Turnaround</div></div>
+  </div>
 </section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-inner">
+    <span>Inverter Repair</span><span>Stabilizer Service</span><span>LED TV Repair</span>
+    <span>Fan Repair</span><span>Home Service Available</span><span>Doorstep Repair</span>
+    <span>20 Years Experience</span><span>Battery Replacement</span><span>Electrical Wiring</span>
+    <span>Inverter Repair</span><span>Stabilizer Service</span><span>LED TV Repair</span>
+    <span>Fan Repair</span><span>Home Service Available</span><span>Doorstep Repair</span>
+    <span>20 Years Experience</span><span>Battery Replacement</span><span>Electrical Wiring</span>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-header">
+    <div><div class="section-tag">What We Fix</div><div class="section-title">Our Services</div></div>
+  </div>
+  <div class="services-grid">
+    <div class="service-card" data-num="01"><span class="svc-icon">🔋</span><div class="svc-name">Inverter Repair</div><div class="svc-desc">Full diagnosis and repair of all inverter brands. Battery testing &amp; replacement included.</div><span class="svc-arrow">→</span></div>
+    <div class="service-card" data-num="02"><span class="svc-icon">⚡</span><div class="svc-name">Stabilizer Repair</div><div class="svc-desc">Voltage stabilizer servicing for home &amp; commercial use. All brands covered.</div><span class="svc-arrow">→</span></div>
+    <div class="service-card" data-num="03"><span class="svc-icon">📺</span><div class="svc-name">LED / LCD TV</div><div class="svc-desc">Screen, panel, backlight and circuit board repairs for all major TV brands.</div><span class="svc-arrow">→</span></div>
+    <div class="service-card" data-num="04"><span class="svc-icon">🌀</span><div class="svc-name">Fan Repair</div><div class="svc-desc">Ceiling, table, and exhaust fan repair. Motor rewinding &amp; capacitor replacement.</div><span class="svc-arrow">→</span></div>
+    <div class="service-card" data-num="05"><span class="svc-icon">🔌</span><div class="svc-name">Electrical Wiring</div><div class="svc-desc">Fault detection &amp; safe rewiring for homes. Short circuits and overloads resolved.</div><span class="svc-arrow">→</span></div>
+    <div class="service-card" data-num="06"><span class="svc-icon">⚙️</span><div class="svc-name">Power Supply</div><div class="svc-desc">SMPS and power supply unit repair for all electronics &amp; appliances.</div><span class="svc-arrow">→</span></div>
+    <div class="service-card" data-num="07"><span class="svc-icon">🛠️</span><div class="svc-name">Home Appliances</div><div class="svc-desc">Repair of all common home electronic appliances with genuine spare parts.</div><span class="svc-arrow">→</span></div>
+    <div class="service-card" data-num="08"><span class="svc-icon">💡</span><div class="svc-name">LED Lights</div><div class="svc-desc">LED bulb, tube light, and driver repair &amp; replacement at affordable rates.</div><span class="svc-arrow">→</span></div>
+    <div class="service-card" data-num="09"><span class="svc-icon">🔋</span><div class="svc-name">Battery Service</div><div class="svc-desc">All battery types — testing, maintenance, replacement &amp; new installation.</div><span class="svc-arrow">→</span></div>
+    <div class="service-card" data-num="10"><span class="svc-icon">🏠</span><div class="svc-name">Doorstep Service</div><div class="svc-desc">We come to you! Home repair available within 10km of Mahua.</div><span class="svc-arrow">→</span></div>
+  </div>
+</section>
+
+<!-- WHY CHOOSE -->
+<section id="why">
+  <div class="section-header">
+    <div><div class="section-tag">Why Us</div><div class="section-title">The Raj Difference</div></div>
+  </div>
+  <div class="why-panels">
+    <div class="why-panel"><div class="why-panel-accent"></div><span class="why-icon">🏆</span><div class="why-title">20 Years of Mastery</div><div class="why-desc">Two decades of hands-on electronics repair. We've seen every problem — and fixed it.</div><div class="why-bg-num">20</div></div>
+    <div class="why-panel"><div class="why-panel-accent"></div><span class="why-icon">⚡</span><div class="why-title">Same-Day Service</div><div class="why-desc">Most repairs completed the same day. We value your time as much as our craft.</div><div class="why-bg-num">1D</div></div>
+    <div class="why-panel"><div class="why-panel-accent"></div><span class="why-icon">🛡️</span><div class="why-title">Genuine Parts Only</div><div class="why-desc">We never compromise quality. Only genuine, tested spare parts go into your devices.</div><div class="why-bg-num">✓</div></div>
+    <div class="why-panel"><div class="why-panel-accent"></div><span class="why-icon">💰</span><div class="why-title">Fair Honest Pricing</div><div class="why-desc">Transparent rates with no hidden charges. Diagnosis is free — you pay only when fixed.</div><div class="why-bg-num">₹</div></div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section id="reviews">
+  <div class="section-header">
+    <div><div class="section-tag">Customer Reviews</div><div class="section-title">What People Say</div></div>
+  </div>
+  <div class="reviews-grid">
+    <div class="review-card"><div class="review-tape">VERIFIED</div><div class="review-stars">⭐⭐⭐⭐⭐</div><p class="review-text">"Best inverter repair in Mahua. Professional, fast, and the price was very reasonable!"</p><div class="review-name">Rakesh Kumar</div></div>
+    <div class="review-card"><div class="review-tape">VERIFIED</div><div class="review-stars">⭐⭐⭐⭐⭐</div><p class="review-text">"Fan repaired within hours. They came to my home and did an excellent job!"</p><div class="review-name">Amit Singh</div></div>
+    <div class="review-card"><div class="review-tape">VERIFIED</div><div class="review-stars">⭐⭐⭐⭐⭐</div><p class="review-text">"LED TV panel issue fixed at a fraction of buying new. Very satisfied with the service!"</p><div class="review-name">Priya Sharma</div></div>
+    <div class="review-card"><div class="review-tape">VERIFIED</div><div class="review-stars">⭐⭐⭐⭐⭐</div><p class="review-text">"भाई बहुत अच्छा काम किया है। बहुत ईमानदार और जल्दी काम करते हैं!"</p><div class="review-name">Rahul Roy</div></div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-left">
+    <div class="section-tag">Get In Touch</div>
+    <div class="section-title">Book a Repair</div>
+    <div class="contact-info-blocks">
+      <div class="info-block"><div class="info-icon">📍</div><div><div class="info-label">Location</div><div class="info-val">Mahua Muzaffarpur Road<br>Near Government Hospital</div></div></div>
+      <div class="info-block"><div class="info-icon">📞</div><div><div class="info-label">Phone</div><div class="info-val">8409723243</div></div></div>
+      <div class="info-block"><div class="info-icon">🕐</div><div><div class="info-label">Working Hours</div><div class="info-val">Mon – Sat: 9AM – 7PM</div></div></div>
+    </div>
+    <a href="tel:8409723243" class="big-call">⚡ 8409723243</a>
+  </div>
+  <div class="contact-form-wrap">
+    <h3>Send a Request</h3>
+    <form id="contactForm">
+      <div class="form-row">
+        <div class="form-group"><label class="form-label">Your Name *</label><input type="text" id="name" class="form-input" placeholder="Full name" required></div>
+        <div class="form-group"><label class="form-label">Phone Number *</label><input type="tel" id="phone" class="form-input" placeholder="Mobile number" required></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label class="form-label">Service Type *</label><select id="serviceType" class="form-input" required><option value="">Select type</option><option>Home Service</option><option>Shop Visit</option></select></div>
+        <div class="form-group"><label class="form-label">Problem *</label><select id="service" class="form-input" required><option value="">Select problem</option><option>Fan Repair</option><option>Inverter Repair</option><option>LED TV Repair</option><option>Stabilizer Repair</option><option>Battery Replacement</option><option>Other Electronics</option></select></div>
+      </div>
+      <div class="form-group"><label class="form-label">Address (For Home Service)</label><input type="text" id="address" class="form-input" placeholder="Your full address"></div>
+      <div class="form-group"><label class="form-label">Describe the Problem</label><textarea id="message" class="form-input" rows="3" placeholder="Tell us what's wrong..."></textarea></div>
+      <button type="submit" class="form-submit">⚡ SEND VIA WHATSAPP</button>
     </form>
-    <a href="https://wa.me/918409723243" class="whatsapp" target="_blank">💬</a>
+  </div>
+</section>
 
-    <footer>
-        <p>©2025 RAJ ELECTRONICS REPAIR & SERVICE | All Rights Reserved</p>
-    </footer>
+<!-- FAQ -->
+<section id="faq">
+  <div class="section-header">
+    <div><div class="section-tag">Common Questions</div><div class="section-title">FAQ</div></div>
+  </div>
+  <div class="faq-list">
+    <div class="faq-item"><button class="faq-q">Do you provide doorstep home service?<div class="faq-toggle">+</div></button><div class="faq-a"><div class="faq-a-inner">Yes! We provide full doorstep repair service within 10km of Mahua. Book through the form above or call/WhatsApp us directly.</div></div></div>
+    <div class="faq-item"><button class="faq-q">How long does a typical repair take?<div class="faq-toggle">+</div></button><div class="faq-a"><div class="faq-a-inner">Most repairs like fans, inverters, and stabilizers are completed same day. LED TV and board repairs may take 1–2 days depending on parts availability.</div></div></div>
+    <div class="faq-item"><button class="faq-q">Do you use genuine spare parts?<div class="faq-toggle">+</div></button><div class="faq-a"><div class="faq-a-inner">Absolutely. We only use genuine, tested spare parts. We never compromise on quality — your device's longevity matters to us.</div></div></div>
+    <div class="faq-item"><button class="faq-q">Is there a charge for diagnosis?<div class="faq-toggle">+</div></button><div class="faq-a"><div class="faq-a-inner">Shop diagnosis is free. You only pay when we fix your device and you're satisfied with the result.</div></div></div>
+    <div class="faq-item"><button class="faq-q">What areas do you cover for home service?<div class="faq-toggle">+</div></button><div class="faq-a"><div class="faq-a-inner">We cover Mahua and surrounding areas within approximately 10km. Call us to confirm availability in your specific location.</div></div></div>
+  </div>
+</section>
 
-    <script src="script.js"></script>
+<a href="https://wa.me/918409723243" class="wa-float" target="_blank">💬</a>
+
+<footer>
+  <div class="footer-logo">RAJ <em>ELECTRONICS</em></div>
+  <div class="footer-copy">© 2025 Raj Electronics Repair & Service · Mahua, Muzaffarpur Road</div>
+  <div class="footer-links"><a href="#services">Services</a><a href="#contact">Contact</a><a href="tel:8409723243">Call</a></div>
+</footer>
+
+<script>
+// Spark particles
+const sc = document.getElementById('sparks');
+for (let i = 0; i < 28; i++) {
+  const d = document.createElement('div');
+  d.className = 'spark-dot';
+  d.style.cssText = `left:${Math.random()*100}%;top:${Math.random()*100}%;--dur:${3+Math.random()*6}s;--tx:${(Math.random()-.5)*180}px;--ty:${-40-Math.random()*140}px;animation-delay:${Math.random()*7}s;width:${1+Math.random()*3}px;height:${1+Math.random()*3}px;`;
+  sc.appendChild(d);
+}
+
+// Dark/Light toggle
+let dark = true;
+const tb = document.getElementById('themeBtn');
+const R = document.documentElement.style;
+tb.onclick = () => {
+  dark = !dark;
+  if (!dark) {
+    R.setProperty('--carbon','#F2F2F2'); R.setProperty('--carbon-2','#E8E8E8');
+    R.setProperty('--carbon-3','#DCDCDC'); R.setProperty('--steel','#CCCCCC');
+    R.setProperty('--steel-light','#AAAAAA'); R.setProperty('--text-bright','#111');
+    R.setProperty('--text-dim','#444'); R.setProperty('--text-muted','#666');
+    tb.textContent = '🌑';
+  } else {
+    R.setProperty('--carbon','#0C0C0C'); R.setProperty('--carbon-2','#141414');
+    R.setProperty('--carbon-3','#1C1C1C'); R.setProperty('--steel','#2A2A2A');
+    R.setProperty('--steel-light','#3D3D3D'); R.setProperty('--text-bright','#F5F5F5');
+    R.setProperty('--text-dim','#888'); R.setProperty('--text-muted','#555');
+    tb.textContent = '🌙';
+  }
+};
+
+// Scroll reveal
+const obs = new IntersectionObserver(entries => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('visible'), i * 70);
+      obs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.08 });
+document.querySelectorAll('.service-card, .review-card').forEach(el => obs.observe(el));
+
+// FAQ
+document.querySelectorAll('.faq-q').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const open = btn.classList.contains('open');
+    document.querySelectorAll('.faq-q').forEach(b => { b.classList.remove('open'); b.nextElementSibling.style.maxHeight = '0'; });
+    if (!open) { btn.classList.add('open'); btn.nextElementSibling.style.maxHeight = btn.nextElementSibling.scrollHeight + 'px'; }
+  });
+});
+
+// Form → WhatsApp
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const n = document.getElementById('name').value.trim();
+  const p = document.getElementById('phone').value.trim();
+  const st = document.getElementById('serviceType').value;
+  const sv = document.getElementById('service').value;
+  const ad = document.getElementById('address').value.trim();
+  const ms = document.getElementById('message').value.trim();
+  if (!n || !p || !st || !sv) { alert('Please fill all required fields!'); return; }
+  const txt = `Hello RAJ ELECTRONICS!%0A%0A👤 *Name:* ${n}%0A📞 *Phone:* ${p}%0A🛠 *Service:* ${st}%0A🔧 *Problem:* ${sv}%0A` + (ad?`📍 *Address:* ${ad}%0A`:'') + (ms?`📝 *Details:* ${ms}`:'');
+  window.open(`https://wa.me/918409723243?text=${txt}`, '_blank');
+  this.reset();
+});
+
+// Active nav highlight
+const navLinks = document.querySelectorAll('nav a[href^="#"]');
+window.addEventListener('scroll', () => {
+  let cur = '';
+  document.querySelectorAll('section[id]').forEach(s => { if (scrollY >= s.offsetTop - 120) cur = s.id; });
+  navLinks.forEach(a => a.style.color = a.getAttribute('href') === '#'+cur ? 'var(--spark)' : '');
+});
+</script>
 </body>
 </html>
