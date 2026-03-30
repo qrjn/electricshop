@@ -903,6 +903,314 @@ select.finput option{background:var(--ink-2);}
   .hero-actions{flex-direction:column;width:100%;}
   .btn-primary,.btn-secondary{width:100%;justify-content:center;}
 }
+
+/* ═══════════════════════════════
+   FLIPKART-STYLE REVIEW SYSTEM
+═══════════════════════════════ */
+
+/* Rating Overview Panel */
+.rating-overview{
+  display:flex;gap:32px;align-items:center;flex-wrap:wrap;
+  background:var(--ink-2);border:1px solid var(--border);
+  border-radius:var(--r);padding:36px;margin-bottom:40px;
+}
+.rating-big-num{
+  text-align:center;min-width:130px;
+}
+.rating-big-num .big-score{
+  font-family:'Syne',sans-serif;font-size:72px;font-weight:800;
+  color:var(--white);line-height:1;
+}
+.rating-big-num .big-stars{display:flex;gap:3px;justify-content:center;margin:6px 0;}
+.rating-big-num .big-count{font-size:12px;color:var(--ash);font-family:'DM Mono',monospace;letter-spacing:1px;}
+.rating-bars{flex:1;display:flex;flex-direction:column;gap:8px;min-width:200px;}
+.rbar-row{display:flex;align-items:center;gap:10px;}
+.rbar-label{font-family:'DM Mono',monospace;font-size:11px;color:var(--ash-light);min-width:18px;text-align:right;}
+.rbar-track{flex:1;height:8px;background:var(--ink-3);border-radius:4px;overflow:hidden;}
+.rbar-fill{height:100%;border-radius:4px;background:linear-gradient(90deg,var(--flame),var(--flame-hot));transition:width 1s cubic-bezier(0.4,0,0.2,1);}
+.rbar-count{font-size:11px;color:var(--ash);min-width:24px;font-family:'DM Mono',monospace;}
+.rating-overview-divider{width:1px;background:var(--border);align-self:stretch;min-height:80px;}
+.rating-overview-cta{display:flex;flex-direction:column;align-items:center;gap:12px;min-width:160px;}
+.write-review-btn{
+  display:flex;align-items:center;gap:8px;
+  background:transparent;color:var(--flame);
+  border:2px solid var(--flame);
+  padding:13px 24px;border-radius:var(--r);
+  font-family:'Syne',sans-serif;font-size:14px;font-weight:700;letter-spacing:0.3px;
+  cursor:pointer;transition:all var(--transition);white-space:nowrap;
+  width:100%;justify-content:center;
+}
+.write-review-btn:hover{background:var(--flame);color:#fff;transform:translateY(-2px);}
+.login-hint{font-size:11px;color:var(--ash);font-family:'DM Mono',monospace;letter-spacing:1px;text-align:center;}
+
+/* Review Controls */
+.review-controls{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:16px;flex-wrap:wrap;margin-bottom:24px;
+}
+.reviews-count-label{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--ash);}
+.sort-select{
+  background:var(--ink-2);border:1px solid var(--border);
+  border-radius:var(--r);color:var(--white);
+  font-family:'DM Mono',monospace;font-size:11px;letter-spacing:1px;
+  padding:8px 14px;cursor:pointer;outline:none;
+  transition:border-color var(--transition);
+}
+.sort-select:focus{border-color:var(--flame);}
+.sort-select option{background:var(--ink-2);}
+
+/* Enhanced Review Cards */
+.review-card-fk{
+  background:var(--ink-2);border:1px solid var(--border);
+  border-radius:var(--r);padding:28px;margin-bottom:16px;
+  position:relative;overflow:hidden;
+  transition:border-color var(--transition),transform var(--transition),box-shadow var(--transition);
+}
+.review-card-fk:hover{
+  border-color:var(--border-warm);
+  transform:translateY(-2px);
+  box-shadow:0 8px 32px rgba(0,0,0,0.2);
+}
+.review-card-fk::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,var(--flame),transparent);
+  opacity:0;transition:opacity var(--transition);
+}
+.review-card-fk:hover::before{opacity:1;}
+.fk-card-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:14px;}
+.fk-rating-badge{
+  display:inline-flex;align-items:center;gap:4px;
+  background:var(--flame);color:#fff;
+  padding:4px 10px;border-radius:4px;
+  font-family:'Syne',sans-serif;font-size:13px;font-weight:800;
+}
+.fk-rating-badge svg{width:11px;height:11px;fill:#fff;}
+.fk-card-meta{display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+.fk-verified{
+  display:flex;align-items:center;gap:4px;
+  font-family:'DM Mono',monospace;font-size:10px;letter-spacing:1px;color:var(--flame);
+}
+.fk-date{font-family:'DM Mono',monospace;font-size:10px;color:var(--ash);letter-spacing:1px;}
+.fk-title{
+  font-family:'Syne',sans-serif;font-size:15px;font-weight:700;
+  color:var(--white);margin-bottom:8px;letter-spacing:-0.2px;
+}
+.fk-body{font-size:13.5px;color:var(--ash-light);line-height:1.85;margin-bottom:14px;}
+/* Photos in review */
+.fk-photos{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px;}
+.fk-photo{
+  width:80px;height:80px;border-radius:var(--r);
+  object-fit:cover;cursor:pointer;
+  border:1px solid var(--border);
+  transition:transform var(--transition),border-color var(--transition);
+}
+.fk-photo:hover{transform:scale(1.06);border-color:var(--flame);}
+.fk-author{display:flex;align-items:center;gap:10px;}
+.fk-avatar{
+  width:32px;height:32px;border-radius:50%;
+  background:var(--flame-dim);border:1px solid var(--border-warm);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Syne',sans-serif;font-weight:800;font-size:13px;
+  color:var(--flame);flex-shrink:0;
+}
+.fk-author-name{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:var(--white);}
+.fk-author-loc{font-size:11px;color:var(--ash);font-family:'DM Mono',monospace;}
+.fk-helpful{
+  display:flex;align-items:center;gap:8px;
+  margin-top:16px;padding-top:14px;border-top:1px solid var(--border);
+}
+.fk-helpful-label{font-size:12px;color:var(--ash);}
+.helpful-btn{
+  display:inline-flex;align-items:center;gap:5px;
+  background:var(--ink-3);border:1px solid var(--border);
+  color:var(--ash-light);font-size:12px;font-family:'DM Sans',sans-serif;
+  padding:5px 12px;border-radius:20px;cursor:pointer;
+  transition:all var(--transition);
+}
+.helpful-btn:hover{border-color:var(--flame);color:var(--flame);}
+.helpful-btn.liked{border-color:var(--flame);color:var(--flame);background:var(--flame-dim);}
+
+/* No reviews empty state */
+.reviews-empty{
+  text-align:center;padding:60px 24px;
+  border:1px dashed var(--border);border-radius:var(--r);
+}
+.reviews-empty .empty-icon{font-size:48px;margin-bottom:16px;}
+.reviews-empty p{font-size:14px;color:var(--ash);margin-bottom:24px;}
+
+/* ── MODAL OVERLAY ── */
+.modal-overlay{
+  position:fixed;inset:0;z-index:99000;
+  background:rgba(0,0,0,0.75);backdrop-filter:blur(8px);
+  display:flex;align-items:center;justify-content:center;
+  padding:20px;opacity:0;pointer-events:none;
+  transition:opacity 0.3s ease;
+}
+.modal-overlay.open{opacity:1;pointer-events:all;}
+.modal-box{
+  background:var(--ink-1);border:1px solid var(--border);
+  border-radius:12px;width:100%;max-width:480px;
+  max-height:90vh;overflow-y:auto;
+  transform:translateY(30px) scale(0.97);
+  transition:transform 0.3s cubic-bezier(0.4,0,0.2,1);
+  position:relative;
+}
+.modal-overlay.open .modal-box{transform:translateY(0) scale(1);}
+.modal-box::-webkit-scrollbar{width:3px;}
+.modal-box::-webkit-scrollbar-thumb{background:var(--flame);}
+.modal-header{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:24px 28px 0;border-bottom:1px solid var(--border);
+  padding-bottom:18px;margin-bottom:0;
+}
+.modal-title{
+  font-family:'Syne',sans-serif;font-size:18px;font-weight:800;
+  color:var(--white);letter-spacing:-0.3px;
+}
+.modal-close{
+  width:32px;height:32px;border-radius:var(--r);
+  background:var(--ink-3);border:1px solid var(--border);
+  color:var(--ash-light);font-size:18px;
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;transition:all var(--transition);
+}
+.modal-close:hover{background:var(--flame-dim);border-color:var(--flame);color:var(--white);}
+.modal-body{padding:28px;}
+
+/* Login modal */
+.login-logo{text-align:center;margin-bottom:28px;}
+.login-logo .ll-icon{font-size:42px;margin-bottom:8px;}
+.login-logo p{font-size:13px;color:var(--ash);line-height:1.7;max-width:280px;margin:0 auto;}
+.modal-input{
+  width:100%;padding:13px 16px;
+  background:var(--ink-2);border:1px solid var(--border);
+  border-radius:var(--r);color:var(--white);
+  font-family:'DM Sans',sans-serif;font-size:14.5px;
+  transition:border-color var(--transition),box-shadow var(--transition);
+  margin-bottom:14px;
+}
+.modal-input::placeholder{color:var(--ash);}
+.modal-input:focus{outline:none;border-color:var(--flame);box-shadow:0 0 0 3px rgba(255,90,31,0.1);}
+.modal-label{
+  display:block;font-family:'DM Mono',monospace;font-size:10px;
+  letter-spacing:2.5px;text-transform:uppercase;color:var(--ash);margin-bottom:7px;
+}
+.modal-btn{
+  width:100%;padding:15px;background:var(--flame);color:#fff;
+  border-radius:var(--r);font-family:'Syne',sans-serif;
+  font-size:15px;font-weight:700;cursor:pointer;
+  transition:all var(--transition);border:none;
+  box-shadow:0 0 24px rgba(255,90,31,0.2);margin-top:6px;
+}
+.modal-btn:hover{background:var(--flame-hot);transform:translateY(-1px);}
+.modal-divider{height:1px;background:var(--border);margin:20px 0;}
+.modal-note{font-size:11px;color:var(--ash);text-align:center;line-height:1.6;}
+
+/* User chip (logged in state) */
+.user-chip{
+  display:flex;align-items:center;gap:8px;
+  background:var(--flame-dim);border:1px solid var(--border-warm);
+  border-radius:20px;padding:6px 14px 6px 6px;
+  font-size:13px;color:var(--flame);font-family:'Syne',sans-serif;font-weight:700;
+  cursor:default;
+}
+.user-chip-avatar{
+  width:24px;height:24px;border-radius:50%;
+  background:var(--flame);color:#fff;
+  display:flex;align-items:center;justify-content:center;
+  font-size:11px;font-weight:800;font-family:'Syne',sans-serif;
+}
+.logout-btn{
+  background:none;border:none;color:var(--ash);font-size:11px;
+  cursor:pointer;font-family:'DM Mono',monospace;letter-spacing:1px;
+  padding:0;transition:color var(--transition);text-decoration:underline;
+}
+.logout-btn:hover{color:var(--flame-hot);}
+
+/* ── REVIEW FORM MODAL ── */
+.rf-section{margin-bottom:22px;}
+.rf-section-title{
+  font-family:'Syne',sans-serif;font-size:13px;font-weight:700;
+  color:var(--white);margin-bottom:10px;letter-spacing:-0.1px;
+}
+/* Star selector */
+.star-selector{display:flex;gap:8px;align-items:center;}
+.star-pick{
+  width:38px;height:38px;border-radius:var(--r);
+  background:var(--ink-3);border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;font-size:20px;transition:all var(--transition);
+}
+.star-pick:hover,.star-pick.active{
+  background:var(--flame-dim);border-color:var(--flame);
+  transform:scale(1.1);
+}
+.star-pick.active{background:var(--flame);border-color:var(--flame);}
+.star-rating-label{
+  font-family:'DM Mono',monospace;font-size:11px;
+  color:var(--ash-light);letter-spacing:1px;margin-left:6px;
+}
+/* Photo upload */
+.photo-upload-area{
+  border:2px dashed var(--border);border-radius:var(--r);
+  padding:24px;text-align:center;cursor:pointer;
+  transition:border-color var(--transition),background var(--transition);
+  position:relative;
+}
+.photo-upload-area:hover{border-color:var(--flame);background:var(--flame-dim);}
+.photo-upload-area input[type=file]{
+  position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%;
+}
+.photo-upload-icon{font-size:28px;margin-bottom:8px;}
+.photo-upload-text{font-size:13px;color:var(--ash);line-height:1.5;}
+.photo-upload-text strong{color:var(--flame);}
+.photo-previews{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px;}
+.photo-preview-item{position:relative;}
+.photo-preview-item img{
+  width:72px;height:72px;object-fit:cover;
+  border-radius:var(--r);border:1px solid var(--border);
+}
+.photo-preview-remove{
+  position:absolute;top:-6px;right:-6px;
+  width:20px;height:20px;border-radius:50%;
+  background:var(--flame-hot);color:#fff;border:none;
+  font-size:12px;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  line-height:1;font-weight:700;
+}
+.rf-char-count{font-family:'DM Mono',monospace;font-size:10px;color:var(--ash);text-align:right;margin-top:4px;}
+
+/* Photo lightbox */
+.lightbox{
+  position:fixed;inset:0;z-index:999999;
+  background:rgba(0,0,0,0.92);
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;pointer-events:none;transition:opacity 0.25s;
+}
+.lightbox.open{opacity:1;pointer-events:all;}
+.lightbox img{max-width:90vw;max-height:85vh;border-radius:var(--r);box-shadow:0 24px 80px rgba(0,0,0,0.6);}
+.lightbox-close{
+  position:absolute;top:20px;right:24px;
+  width:40px;height:40px;border-radius:50%;
+  background:rgba(255,255,255,0.15);border:none;
+  color:#fff;font-size:20px;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  transition:background var(--transition);
+}
+.lightbox-close:hover{background:rgba(255,90,31,0.6);}
+
+/* Toast */
+.toast{
+  position:fixed;bottom:100px;left:50%;transform:translateX(-50%) translateY(20px);
+  background:var(--ink-2);border:1px solid var(--flame);border-radius:var(--r);
+  padding:12px 24px;font-size:13.5px;color:var(--white);font-family:'Syne',sans-serif;font-weight:600;
+  z-index:99999;opacity:0;pointer-events:none;
+  transition:all 0.3s;white-space:nowrap;
+  box-shadow:0 8px 32px rgba(0,0,0,0.4);
+}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+.toast.success{border-color:#4ADE80;color:#4ADE80;}
+.toast.error{border-color:var(--flame-hot);color:var(--flame-hot);}
 </style>
 </head>
 <body>
@@ -1221,94 +1529,53 @@ select.finput option{background:var(--ink-2);}
   </div>
 </section>
 
-<!-- ═══ REVIEWS ═══ -->
+<!-- ═══ REVIEWS — FLIPKART STYLE ═══ -->
 <section id="reviews" class="section section-alt">
   <div class="wrapper">
     <div class="section-top">
       <div>
         <div class="label"><div class="label-bar"></div>Customer Reviews</div>
-        <h2 class="heading">What People <em>Say</em></h2>
+        <h2 class="heading">Ratings &amp; <em>Reviews</em></h2>
       </div>
-      <p class="subhead">Real customers, real reviews — from the community of Mahua and surrounding areas.</p>
-    </div>
-    <div class="reviews-grid">
-      <div class="review-card reveal">
-        <div class="review-badge">✓ Verified</div>
-        <div class="review-stars">
-          <svg class="star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg class="star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg class="star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg class="star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg class="star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-        </div>
-        <p class="review-quote">"Best inverter repair in Mahua! Professional service, very fast and the price was completely fair. My inverter has been working perfectly for months now."</p>
-        <div class="review-author">
-          <div class="review-avatar">R</div>
-          <div class="review-name-wrap">
-            <div class="rname">Rakesh Kumar</div>
-            <div class="rsub">Mahua, Regular Customer</div>
-          </div>
-        </div>
-        <div class="big-q">"</div>
-      </div>
-      <div class="review-card reveal reveal-delay-1">
-        <div class="review-badge">✓ Verified</div>
-        <div class="review-stars">
-          <svg class="star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg class="star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg class="star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg class="star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg class="star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-        </div>
-        <p class="review-quote">"Home service was excellent! They came on time, fixed my ceiling fan on the spot, and didn't charge anything extra. Highly recommend to everyone."</p>
-        <div class="review-author">
-          <div class="review-avatar">A</div>
-          <div class="review-name-wrap">
-            <div class="rname">Amit Singh</div>
-            <div class="rsub">Nearby Village, Home Service</div>
-          </div>
-        </div>
-        <div class="big-q">"</div>
-      </div>
-      <div class="review-card reveal reveal-delay-2">
-        <div class="review-badge">✓ Verified</div>
-        <div class="review-stars">
-          <svg class="star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg class="star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg class="star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg class="star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg class="star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-        </div>
-        <p class="review-quote">"TV screen issue fixed at a fraction of what a new TV would cost. Abhishek bhaiya is very honest — he told me exactly what was wrong and what the cost would be before starting."</p>
-        <div class="review-author">
-          <div class="review-avatar">P</div>
-          <div class="review-name-wrap">
-            <div class="rname">Priya Sharma</div>
-            <div class="rsub">Mahua Town</div>
-          </div>
-        </div>
-        <div class="big-q">"</div>
-      </div>
-      <div class="review-card reveal reveal-delay-3">
-        <div class="review-badge">✓ Verified</div>
-        <div class="review-stars">
-          <svg class="star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg class="star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg class="star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg class="star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg class="star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-        </div>
-        <p class="review-quote">भाई बहुत अच्छा काम किया है</p>
-        <div class="review-author">
-          <div class="review-avatar">R</div>
-          <div class="review-name-wrap">
-            <div class="rname">Rahul roy</div>
-            <div class="rsub">Mahua, Loyal Customer</div>
-          </div>
-        </div>
-        <div class="big-q">"</div>
+      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:10px;">
+        <!-- Auth state container -->
+        <div id="authStateContainer"></div>
       </div>
     </div>
+
+    <!-- Rating Overview -->
+    <div class="rating-overview reveal" id="ratingOverview">
+      <div class="rating-big-num">
+        <div class="big-score" id="avgScore">4.9</div>
+        <div class="big-stars" id="avgStars"></div>
+        <div class="big-count" id="totalCount">4 Ratings</div>
+      </div>
+      <div class="rating-overview-divider"></div>
+      <div class="rating-bars" id="ratingBars">
+        <!-- Filled by JS -->
+      </div>
+      <div class="rating-overview-divider"></div>
+      <div class="rating-overview-cta">
+        <button class="write-review-btn" id="writeReviewBtn" onclick="handleWriteReview()">
+          ✍️ Rate &amp; Review
+        </button>
+        <div class="login-hint" id="loginHintText">Login to write a review</div>
+      </div>
+    </div>
+
+    <!-- Controls -->
+    <div class="review-controls">
+      <span class="reviews-count-label" id="reviewCountLabel">4 Reviews</span>
+      <select class="sort-select" id="sortSelect" onchange="renderReviews()">
+        <option value="recent">Most Recent</option>
+        <option value="highest">Highest Rating</option>
+        <option value="lowest">Lowest Rating</option>
+        <option value="helpful">Most Helpful</option>
+      </select>
+    </div>
+
+    <!-- Reviews List -->
+    <div id="reviewsList"></div>
   </div>
 </section>
 
@@ -1475,6 +1742,86 @@ select.finput option{background:var(--ink-2);}
     </div>
   </div>
 </section>
+
+<!-- ═══ LOGIN MODAL ═══ -->
+<div class="modal-overlay" id="loginModal">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div class="modal-title">Login to Review</div>
+      <button class="modal-close" onclick="closeModal('loginModal')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="login-logo">
+        <div class="ll-icon">⚡</div>
+        <p>Login with your name and phone number to share your experience with RAJ ELECTRONICS.</p>
+      </div>
+      <label class="modal-label">Your Name *</label>
+      <input type="text" class="modal-input" id="loginName" placeholder="e.g. Rahul Kumar" maxlength="40">
+      <label class="modal-label">Phone Number *</label>
+      <input type="tel" class="modal-input" id="loginPhone" placeholder="e.g. 9876543210" maxlength="10">
+      <label class="modal-label">Location (optional)</label>
+      <input type="text" class="modal-input" id="loginLocation" placeholder="e.g. Mahua, Bihar">
+      <button class="modal-btn" onclick="handleLogin()">✅ Continue to Review</button>
+      <div class="modal-divider"></div>
+      <div class="modal-note">Your information is only used to display your review. We don't store it on any server.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ REVIEW FORM MODAL ═══ -->
+<div class="modal-overlay" id="reviewModal">
+  <div class="modal-box" style="max-width:540px;">
+    <div class="modal-header">
+      <div class="modal-title">Rate &amp; Review</div>
+      <button class="modal-close" onclick="closeModal('reviewModal')">✕</button>
+    </div>
+    <div class="modal-body">
+      <!-- Star Rating -->
+      <div class="rf-section">
+        <div class="rf-section-title">Your Rating *</div>
+        <div class="star-selector">
+          <div class="star-pick" data-val="1" onclick="selectStar(1)" title="1 - Poor">★</div>
+          <div class="star-pick" data-val="2" onclick="selectStar(2)" title="2 - Fair">★</div>
+          <div class="star-pick" data-val="3" onclick="selectStar(3)" title="3 - Good">★</div>
+          <div class="star-pick" data-val="4" onclick="selectStar(4)" title="4 - Very Good">★</div>
+          <div class="star-pick" data-val="5" onclick="selectStar(5)" title="5 - Excellent">★</div>
+          <span class="star-rating-label" id="starLabel">Tap to rate</span>
+        </div>
+      </div>
+      <!-- Title -->
+      <div class="rf-section">
+        <div class="rf-section-title">Review Title *</div>
+        <input type="text" class="modal-input" id="rfTitle" placeholder="Summarize your experience in a line..." maxlength="80">
+      </div>
+      <!-- Body -->
+      <div class="rf-section">
+        <div class="rf-section-title">Your Review *</div>
+        <textarea class="modal-input" id="rfBody" rows="4" placeholder="Share details about your experience — what was repaired, how was the service, was it worth it?" maxlength="500" oninput="updateCharCount()" style="resize:vertical;min-height:100px;"></textarea>
+        <div class="rf-char-count"><span id="charCount">0</span>/500</div>
+      </div>
+      <!-- Photos -->
+      <div class="rf-section">
+        <div class="rf-section-title">Add Photos <span style="font-size:11px;font-weight:400;color:var(--ash);font-family:'DM Mono',monospace;">(optional, max 3)</span></div>
+        <div class="photo-upload-area" id="photoUploadArea">
+          <input type="file" id="photoInput" accept="image/*" multiple onchange="handlePhotoUpload(event)">
+          <div class="photo-upload-icon">📷</div>
+          <div class="photo-upload-text">Click or drag photos here<br><strong>JPG, PNG, WEBP</strong> · Max 3 photos</div>
+        </div>
+        <div class="photo-previews" id="photoPreviews"></div>
+      </div>
+      <button class="modal-btn" onclick="submitReview()">⚡ Submit Review</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ PHOTO LIGHTBOX ═══ -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+  <img id="lightboxImg" src="" alt="Review photo">
+</div>
+
+<!-- ═══ TOAST ═══ -->
+<div class="toast" id="toastEl"></div>
 
 <!-- ═══ FOOTER ═══ -->
 <footer class="footer">
@@ -1651,7 +1998,378 @@ document.addEventListener('mousemove', e => {
   orb.style.transform = `translateY(calc(-50% + ${y}px)) translateX(${x}px)`;
 });
 
-/* ─── COLOUR THEME SWITCHER ─── */
+/* ═══════════════════════════════════════
+   REVIEW SYSTEM — FLIPKART STYLE
+═══════════════════════════════════════ */
+
+// Seed reviews (always visible)
+const SEED_REVIEWS = [
+  {
+    id: 'seed1', name: 'Rakesh Kumar', location: 'Mahua, Regular Customer',
+    rating: 5, title: 'Best inverter repair in Mahua!',
+    body: 'Professional service, very fast and the price was completely fair. My inverter has been working perfectly for months now. Highly recommend to everyone in Mahua.',
+    photos: [], date: '2025-02-10', helpful: 12, seed: true
+  },
+  {
+    id: 'seed2', name: 'Amit Singh', location: 'Nearby Village, Home Service',
+    rating: 5, title: 'Excellent home service — came on time!',
+    body: 'Home service was excellent! They came on time, fixed my ceiling fan on the spot, and didn\'t charge anything extra. Will call again whenever needed.',
+    photos: [], date: '2025-01-28', helpful: 8, seed: true
+  },
+  {
+    id: 'seed3', name: 'Priya Sharma', location: 'Mahua Town',
+    rating: 5, title: 'Honest pricing — no hidden charges',
+    body:  ' Abhishek bhaiya is very honest — he told me exactly what was wrong and what the cost would be before starting.',
+    photos: [], date: '2024-12-15', helpful: 15, seed: true
+  },
+  {
+    id: 'seed4', name: 'Rahul Roy', location: 'Mahua, Loyal Customer',
+    rating: 5, title: 'भाई बहुत अच्छा काम किया है',
+    body: 'मेरा inverter और fan दोनों ठीक हुए एक ही दिन में।',
+    photos: [], date: '2024-11-20', helpful: 6, seed: true
+  }
+];
+
+const STAR_LABELS = ['', 'Poor', 'Fair', 'Good', 'Very Good', 'Excellent'];
+let selectedStar = 0;
+let uploadedPhotos = []; // base64 strings
+let likedReviews = JSON.parse(localStorage.getItem('raj-liked') || '[]');
+
+function getUserReviews() {
+  return JSON.parse(localStorage.getItem('raj-reviews') || '[]');
+}
+function saveUserReviews(reviews) {
+  localStorage.setItem('raj-reviews', JSON.stringify(reviews));
+}
+function getAllReviews() {
+  return [...SEED_REVIEWS, ...getUserReviews()];
+}
+function getCurrentUser() {
+  return JSON.parse(localStorage.getItem('raj-user') || 'null');
+}
+function saveUser(user) {
+  localStorage.setItem('raj-user', JSON.stringify(user));
+}
+
+// ── Auth State UI ──
+function renderAuthState() {
+  const user = getCurrentUser();
+  const container = document.getElementById('authStateContainer');
+  const hint = document.getElementById('loginHintText');
+  if (!container) return;
+  if (user) {
+    container.innerHTML = `
+      <div style="display:flex;align-items:center;gap:10px;">
+        <div class="user-chip">
+          <div class="user-chip-avatar">${user.name.charAt(0).toUpperCase()}</div>
+          ${user.name.split(' ')[0]}
+        </div>
+        <button class="logout-btn" onclick="handleLogout()">Logout</button>
+      </div>`;
+    if (hint) hint.textContent = 'Share your experience';
+  } else {
+    container.innerHTML = '';
+    if (hint) hint.textContent = 'Login to write a review';
+  }
+}
+
+function handleWriteReview() {
+  const user = getCurrentUser();
+  if (!user) {
+    openModal('loginModal');
+  } else {
+    openModal('reviewModal');
+  }
+}
+
+function handleLogin() {
+  const name = document.getElementById('loginName').value.trim();
+  const phone = document.getElementById('loginPhone').value.trim();
+  const location = document.getElementById('loginLocation').value.trim();
+  if (!name) { showToast('Please enter your name', 'error'); return; }
+  if (!phone || phone.length < 10) { showToast('Please enter a valid phone number', 'error'); return; }
+  saveUser({ name, phone, location: location || 'Mahua' });
+  closeModal('loginModal');
+  renderAuthState();
+  showToast(`Welcome, ${name.split(' ')[0]}! 🎉`, 'success');
+  setTimeout(() => openModal('reviewModal'), 400);
+}
+
+function handleLogout() {
+  localStorage.removeItem('raj-user');
+  renderAuthState();
+  showToast('Logged out successfully');
+}
+
+// ── Review Form ──
+function selectStar(val) {
+  selectedStar = val;
+  document.querySelectorAll('.star-pick').forEach(el => {
+    el.classList.toggle('active', parseInt(el.dataset.val) <= val);
+  });
+  document.getElementById('starLabel').textContent = STAR_LABELS[val] || '';
+}
+
+function updateCharCount() {
+  const txt = document.getElementById('rfBody').value;
+  document.getElementById('charCount').textContent = txt.length;
+}
+
+function handlePhotoUpload(e) {
+  const files = Array.from(e.target.files);
+  const remaining = 3 - uploadedPhotos.length;
+  if (remaining <= 0) { showToast('Maximum 3 photos allowed', 'error'); return; }
+  const toAdd = files.slice(0, remaining);
+  toAdd.forEach(file => {
+    if (!file.type.startsWith('image/')) return;
+    const reader = new FileReader();
+    reader.onload = (ev) => {
+      uploadedPhotos.push(ev.target.result);
+      renderPhotoPreviews();
+    };
+    reader.readAsDataURL(file);
+  });
+  // Reset input so same file can be re-selected
+  e.target.value = '';
+}
+
+function renderPhotoPreviews() {
+  const container = document.getElementById('photoPreviews');
+  container.innerHTML = uploadedPhotos.map((src, i) => `
+    <div class="photo-preview-item">
+      <img src="${src}" alt="Photo ${i+1}">
+      <button class="photo-preview-remove" onclick="removePhoto(${i})">✕</button>
+    </div>`).join('');
+  // Show/hide upload area
+  const area = document.getElementById('photoUploadArea');
+  if (uploadedPhotos.length >= 3) {
+    area.style.display = 'none';
+  } else {
+    area.style.display = 'block';
+  }
+}
+
+function removePhoto(i) {
+  uploadedPhotos.splice(i, 1);
+  renderPhotoPreviews();
+}
+
+function submitReview() {
+  const user = getCurrentUser();
+  if (!user) { showToast('Please login first', 'error'); return; }
+  if (!selectedStar) { showToast('Please select a star rating', 'error'); return; }
+  const title = document.getElementById('rfTitle').value.trim();
+  const body = document.getElementById('rfBody').value.trim();
+  if (!title) { showToast('Please add a review title', 'error'); return; }
+  if (body.length < 10) { showToast('Please write at least 10 characters', 'error'); return; }
+
+  const review = {
+    id: 'ur_' + Date.now(),
+    name: user.name,
+    location: user.location || 'Mahua',
+    rating: selectedStar,
+    title, body,
+    photos: [...uploadedPhotos],
+    date: new Date().toISOString().split('T')[0],
+    helpful: 0,
+    seed: false
+  };
+
+  const existing = getUserReviews();
+  saveUserReviews([review, ...existing]);
+  closeModal('reviewModal');
+  resetReviewForm();
+  renderReviews();
+  renderRatingOverview();
+  showToast('Review submitted! Thank you 🎉', 'success');
+}
+
+function resetReviewForm() {
+  selectedStar = 0;
+  uploadedPhotos = [];
+  document.querySelectorAll('.star-pick').forEach(el => el.classList.remove('active'));
+  document.getElementById('starLabel').textContent = 'Tap to rate';
+  document.getElementById('rfTitle').value = '';
+  document.getElementById('rfBody').value = '';
+  document.getElementById('charCount').textContent = '0';
+  document.getElementById('photoPreviews').innerHTML = '';
+  document.getElementById('photoUploadArea').style.display = 'block';
+}
+
+// ── Render Reviews ──
+function starsHTML(rating, size = 14) {
+  return Array.from({length:5}, (_, i) =>
+    `<svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="${i < rating ? 'var(--flame-hot)' : 'var(--ink-3)'}"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>`
+  ).join('');
+}
+
+function formatDate(dateStr) {
+  const d = new Date(dateStr);
+  return d.toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' });
+}
+
+function renderReviews() {
+  const sort = document.getElementById('sortSelect')?.value || 'recent';
+  let reviews = getAllReviews();
+
+  if (sort === 'recent') reviews.sort((a,b) => new Date(b.date) - new Date(a.date));
+  else if (sort === 'highest') reviews.sort((a,b) => b.rating - a.rating);
+  else if (sort === 'lowest') reviews.sort((a,b) => a.rating - b.rating);
+  else if (sort === 'helpful') reviews.sort((a,b) => (b.helpful||0) - (a.helpful||0));
+
+  const container = document.getElementById('reviewsList');
+  const countLabel = document.getElementById('reviewCountLabel');
+  if (countLabel) countLabel.textContent = `${reviews.length} Review${reviews.length !== 1 ? 's' : ''}`;
+
+  if (!reviews.length) {
+    container.innerHTML = `
+      <div class="reviews-empty">
+        <div class="empty-icon">💬</div>
+        <p>No reviews yet. Be the first to share your experience!</p>
+        <button class="write-review-btn" style="width:auto;margin:0 auto;" onclick="handleWriteReview()">✍️ Write First Review</button>
+      </div>`;
+    return;
+  }
+
+  container.innerHTML = reviews.map(r => {
+    const isLiked = likedReviews.includes(r.id);
+    const photosHTML = r.photos && r.photos.length
+      ? `<div class="fk-photos">${r.photos.map(p =>
+          `<img class="fk-photo" src="${p}" alt="Review photo" onclick="openLightbox('${p}')">`
+        ).join('')}</div>` : '';
+    return `
+    <div class="review-card-fk">
+      <div class="fk-card-top">
+        <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
+          <div class="fk-rating-badge">
+            ${r.rating} <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          ${r.seed ? '<div class="fk-verified">✓ Verified Purchase</div>' : '<div class="fk-verified">✓ Verified</div>'}
+        </div>
+        <div class="fk-date">${formatDate(r.date)}</div>
+      </div>
+      <div class="fk-title">${r.title}</div>
+      <div class="fk-body">${r.body}</div>
+      ${photosHTML}
+      <div class="fk-author">
+        <div class="fk-avatar">${r.name.charAt(0).toUpperCase()}</div>
+        <div>
+          <div class="fk-author-name">${r.name}</div>
+          <div class="fk-author-loc">📍 ${r.location}</div>
+        </div>
+      </div>
+      <div class="fk-helpful">
+        <span class="fk-helpful-label">Was this helpful?</span>
+        <button class="helpful-btn${isLiked ? ' liked' : ''}" onclick="markHelpful('${r.id}', ${r.helpful || 0}, this)">
+          👍 Yes (${r.helpful || 0})
+        </button>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function markHelpful(id, current, btn) {
+  if (likedReviews.includes(id)) {
+    showToast('Already marked as helpful!');
+    return;
+  }
+  likedReviews.push(id);
+  localStorage.setItem('raj-liked', JSON.stringify(likedReviews));
+  // Update seed or user review
+  const userRevs = getUserReviews();
+  const idx = userRevs.findIndex(r => r.id === id);
+  if (idx >= 0) {
+    userRevs[idx].helpful = (userRevs[idx].helpful || 0) + 1;
+    saveUserReviews(userRevs);
+  }
+  const newCount = current + 1;
+  btn.textContent = `👍 Yes (${newCount})`;
+  btn.classList.add('liked');
+  showToast('Marked as helpful!', 'success');
+}
+
+// ── Rating Overview ──
+function renderRatingOverview() {
+  const all = getAllReviews();
+  const total = all.length;
+  const avg = total ? (all.reduce((s, r) => s + r.rating, 0) / total).toFixed(1) : '0.0';
+  const counts = [0,0,0,0,0]; // index 0=1star, 4=5star
+  all.forEach(r => { if (r.rating >= 1 && r.rating <= 5) counts[r.rating-1]++; });
+
+  const avgEl = document.getElementById('avgScore');
+  const starsEl = document.getElementById('avgStars');
+  const countEl = document.getElementById('totalCount');
+  const barsEl = document.getElementById('ratingBars');
+
+  if (avgEl) avgEl.textContent = avg;
+  if (starsEl) starsEl.innerHTML = starsHTML(Math.round(parseFloat(avg)), 16);
+  if (countEl) countEl.textContent = `${total} Rating${total !== 1 ? 's' : ''}`;
+
+  if (barsEl) {
+    barsEl.innerHTML = [5,4,3,2,1].map(star => {
+      const cnt = counts[star-1];
+      const pct = total ? Math.round((cnt/total)*100) : 0;
+      return `<div class="rbar-row">
+        <span class="rbar-label">${star}★</span>
+        <div class="rbar-track"><div class="rbar-fill" style="width:${pct}%"></div></div>
+        <span class="rbar-count">${cnt}</span>
+      </div>`;
+    }).join('');
+  }
+}
+
+// ── Modal helpers ──
+function openModal(id) {
+  document.getElementById(id).classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal(id) {
+  document.getElementById(id).classList.remove('open');
+  document.body.style.overflow = '';
+}
+// Close on overlay click
+document.querySelectorAll('.modal-overlay').forEach(overlay => {
+  overlay.addEventListener('click', function(e) {
+    if (e.target === this) closeModal(this.id);
+  });
+});
+// Close on Escape
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    document.querySelectorAll('.modal-overlay.open').forEach(m => closeModal(m.id));
+    closeLightbox();
+  }
+});
+
+// ── Lightbox ──
+function openLightbox(src) {
+  document.getElementById('lightboxImg').src = src;
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// ── Toast ──
+let toastTimer;
+function showToast(msg, type = '') {
+  const t = document.getElementById('toastEl');
+  t.textContent = msg;
+  t.className = 'toast' + (type ? ' ' + type : '');
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove('show'), 2800);
+}
+
+// ── INIT ──
+(function initReviewSystem() {
+  renderAuthState();
+  renderRatingOverview();
+  renderReviews();
+})();
+
 const themes = [
   { id:'dark', label:'🌑', name:'Dark',
     vars:{'--ink':'#0A0907','--ink-1':'#111009','--ink-2':'#1A1814','--ink-3':'#252320',
