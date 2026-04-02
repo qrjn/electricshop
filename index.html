@@ -1211,6 +1211,23 @@ select.finput option{background:var(--ink-2);}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
 .toast.success{border-color:#4ADE80;color:#4ADE80;}
 .toast.error{border-color:var(--flame-hot);color:var(--flame-hot);}
+
+/* ── Footer Theme Switcher ── */
+.footer-theme-switcher{margin-top:18px;}
+.footer-theme-label{
+  font-family:'DM Mono',monospace;font-size:9px;letter-spacing:3px;
+  text-transform:uppercase;color:var(--ash);margin-bottom:10px;
+}
+.footer-theme-btns{display:flex;gap:7px;flex-wrap:wrap;}
+.tsw-btn{
+  width:36px;height:36px;border-radius:9px;
+  background:var(--ink-3);border:1.5px solid var(--border);
+  cursor:pointer;font-size:17px;display:flex;align-items:center;
+  justify-content:center;transition:all .2s;line-height:1;
+  padding:0;
+}
+.tsw-btn:hover{border-color:var(--flame);background:var(--flame-dim);transform:scale(1.1);}
+.tsw-btn.active{border-color:var(--flame);background:var(--flame-dim);box-shadow:0 0 0 1.5px var(--flame);}
 </style>
 </head>
 <body>
@@ -1857,6 +1874,17 @@ select.finput option{background:var(--ink-2);}
           <li><a href="#faq">FAQ</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
+        <div class="footer-theme-switcher">
+          <div class="footer-theme-label">Theme</div>
+          <div class="footer-theme-btns">
+            <button class="tsw-btn" data-theme="dark"   title="Dark">🌑</button>
+            <button class="tsw-btn" data-theme="light"  title="Light">☀️</button>
+            <button class="tsw-btn" data-theme="ocean"  title="Ocean">🌊</button>
+            <button class="tsw-btn" data-theme="forest" title="Forest">🌿</button>
+            <button class="tsw-btn" data-theme="purple" title="Purple">🔮</button>
+            <button class="tsw-btn" data-theme="ember"  title="Ember">🔥</button>
+          </div>
+        </div>
       </div>
       <div class="footer-links-col">
         <h4>Contact</h4>
@@ -2421,61 +2449,9 @@ function applyTheme(theme){
   document.querySelectorAll('.tsw-btn').forEach(b=>b.classList.toggle('active',b.dataset.theme===theme.id));
 }
 
-/* Build widget */
-const sw = document.createElement('div'); sw.id='theme-switcher';
-sw.innerHTML=`<button id="tsw-toggle" title="Change Theme">🎨</button>
-<div id="tsw-panel">
-  <div class="tsw-lbl">Background Theme</div>
-  <div class="tsw-grid">${themes.map(t=>`<button class="tsw-btn" data-theme="${t.id}" title="${t.name}">
-    <span>${t.label}</span><span class="tsw-n">${t.name}</span></button>`).join('')}</div>
-  <div class="tsw-sep"></div>
-  <button id="tsw-fs">⛶ Fullscreen</button>
-</div>`;
-document.body.appendChild(sw);
-
-const tswCSS=document.createElement('style');
-tswCSS.textContent=`
-#theme-switcher{position:fixed;bottom:100px;right:28px;z-index:9500;display:flex;flex-direction:column;align-items:flex-end;gap:8px;}
-#tsw-toggle{width:50px;height:50px;border-radius:50%;background:var(--ink-2);border:1.5px solid var(--border);
-  display:flex;align-items:center;justify-content:center;font-size:22px;cursor:pointer;
-  box-shadow:0 4px 24px rgba(0,0,0,0.45);transition:transform .25s,background .25s;}
-#tsw-toggle:hover{transform:scale(1.12);background:var(--ink-3);}
-#tsw-panel{background:var(--ink-2);border:1px solid var(--border);border-radius:14px;padding:16px 14px;
-  box-shadow:0 10px 48px rgba(0,0,0,0.55);display:none;width:210px;animation:tsIn .2s ease;}
-@keyframes tsIn{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
-#tsw-panel.open{display:block;}
-.tsw-lbl{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:3px;text-transform:uppercase;
-  color:var(--ash);margin-bottom:11px;}
-.tsw-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;}
-.tsw-btn{display:flex;flex-direction:column;align-items:center;gap:3px;padding:9px 6px;
-  border-radius:9px;background:var(--ink-3);border:1.5px solid var(--border);cursor:pointer;transition:all .2s;}
-.tsw-btn:hover{border-color:var(--flame);background:var(--flame-dim);}
-.tsw-btn.active{border-color:var(--flame);background:var(--flame-dim);box-shadow:0 0 0 1.5px var(--flame);}
-.tsw-btn>span:first-child{font-size:18px;line-height:1;}
-.tsw-n{font-family:'DM Mono',monospace;font-size:8px;letter-spacing:1px;color:var(--ash-light);
-  text-transform:uppercase;margin-top:1px;}
-.tsw-sep{height:1px;background:var(--border);margin:10px 0;}
-#tsw-fs{width:100%;padding:9px;border-radius:8px;background:var(--ink-3);border:1px solid var(--border);
-  color:var(--ash-light);font-family:'DM Mono',monospace;font-size:9.5px;letter-spacing:1px;
-  cursor:pointer;transition:all .2s;}
-#tsw-fs:hover{color:var(--white);border-color:var(--flame);background:var(--flame-dim);}
-@media(max-width:480px){#theme-switcher{bottom:90px;right:14px;}#tsw-panel{width:190px;}}
-`;
-document.head.appendChild(tswCSS);
-
-document.getElementById('tsw-toggle').onclick=()=>document.getElementById('tsw-panel').classList.toggle('open');
-document.addEventListener('click',e=>{if(!sw.contains(e.target))document.getElementById('tsw-panel').classList.remove('open');});
+/* Init footer theme buttons */
 document.querySelectorAll('.tsw-btn').forEach(btn=>{
   btn.onclick=()=>{const t=themes.find(t=>t.id===btn.dataset.theme);if(t)applyTheme(t);}
-});
-document.getElementById('tsw-fs').onclick=()=>{
-  if(!document.fullscreenElement){document.documentElement.requestFullscreen().catch(()=>{});
-    document.getElementById('tsw-fs').textContent='✕ Exit Fullscreen';}
-  else{document.exitFullscreen();document.getElementById('tsw-fs').textContent='⛶ Fullscreen';}
-};
-document.addEventListener('fullscreenchange',()=>{
-  const b=document.getElementById('tsw-fs');
-  if(b)b.textContent=document.fullscreenElement?'✕ Exit Fullscreen':'⛶ Fullscreen';
 });
 const saved=localStorage.getItem('raj-theme');
 applyTheme(themes.find(t=>t.id===saved)||themes[0]);
