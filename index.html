@@ -131,7 +131,7 @@ body::before{
   width:30px;cursor:pointer;padding:4px;
 }
 .hamburger span{
-  width:100%;height:2px;background:#1A1714;
+  width:100%;height:2px;background:var(--white);
   border-radius:4px;transition:var(--transition);display:block;
 }
 
@@ -873,15 +873,14 @@ select.finput option{background:var(--ink-2);}
   .contact-layout{grid-template-columns:1fr;}
 }
 @media(max-width:768px){
-  .nav-menu{display:none !important;}
-  .hamburger{display:flex !important;z-index:9001;position:relative;}
+  .nav-menu{display:none;}
+  .hamburger{display:flex;}
   .nav-menu.open{
-    display:flex !important;flex-direction:column;
+    display:flex;flex-direction:column;
     position:fixed;top:72px;left:0;right:0;
-    background:#F8F6F2;
-    border-top:2px solid var(--flame);
-    border-bottom:2px solid var(--flame);
-    box-shadow:0 8px 30px rgba(0,0,0,0.15);
+    background:rgba(10,9,7,0.98);
+    backdrop-filter:blur(20px);
+    border-bottom:1px solid var(--border);
     padding:20px 24px;gap:4px;
     z-index:8999;
   }
