@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -816,6 +816,30 @@ select.finput option{background:var(--ink-2);}
   color:var(--white);
   border-color:rgba(255,255,255,0.15);
   background:var(--white-ghost);
+}
+/* YouTube brand color */
+.social-btn.youtube-btn{
+  border-color:#FF0000;
+  color:#FF0000;
+  background:rgba(255,0,0,0.07);
+}
+.social-btn.youtube-btn:hover{
+  background:#FF0000;
+  color:#fff;
+  border-color:#FF0000;
+  box-shadow:0 4px 18px rgba(255,0,0,0.35);
+}
+/* Instagram brand gradient */
+.social-btn.instagram-btn{
+  border-color:#C13584;
+  color:#C13584;
+  background:rgba(193,53,132,0.07);
+}
+.social-btn.instagram-btn:hover{
+  background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);
+  color:#fff;
+  border-color:transparent;
+  box-shadow:0 4px 18px rgba(193,53,132,0.4);
 }
 .footer-bottom{
   display:flex;justify-content:space-between;
@@ -1858,8 +1882,8 @@ select.finput option{background:var(--ink-2);}
         </div>
         <p>Raj electronics repair in Mahua for 20+ years. Inverters, TVs, fans, stabilizers and more — fixed right, fixed fast.</p>
         <div class="footer-social" style="margin-top:16px;">
-          <a href= "https://www.youtube.com/@rajelectronicsmahua"  target="_blank" class="social-btn">▶ YouTube</a>
-          <a href="https://www.instagram.com/rajelectronicsmahua1997" target="_blank" class="social-btn">📸 Instagram</a>
+          <a href= "https://www.youtube.com/@rajelectronicsmahua"  target="_blank" class="social-btn youtube-btn">▶ YouTube</a>
+          <a href="https://www.instagram.com/rajelectronicsmahua1997" target="_blank" class="social-btn instagram-btn">📸 Instagram</a>
         </div>
       </div>
       <div class="footer-links-col">
@@ -2411,6 +2435,3 @@ function showToast(msg, type = '') {
 </script>
 </body>
 </html>
-
-
- 
