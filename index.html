@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RAJ ELECTRONICS :::: Expert Repair Service  Mahua Vaishali </title>
+<title>RAJ ELECTRONICS :: All Electronic Items Repair & Service Mahua Vaishali </title>
 <link rel="shortcut icon" href="/favicon.ico">
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
@@ -2430,7 +2430,18 @@ function showToast(msg, type = '') {
   Object.entries(vars).forEach(([k,v]) => root.style.setProperty(k,v));
   let ds = document.getElementById('dyn-nav-style');
   if(!ds){ds=document.createElement('style');ds.id='dyn-nav-style';document.head.appendChild(ds);}
-  ds.textContent='.nav.scrolled{background:rgba(248,246,242,0.96)!important;}';
+  ds.textContent=`
+    .nav.scrolled{background:rgba(248,246,242,0.96)!important;}
+    @media(max-width:768px){
+      .nav-menu.open{
+        background:rgba(248,246,242,0.98)!important;
+        border-bottom:1px solid rgba(0,0,0,0.1)!important;
+        box-shadow:0 8px 32px rgba(0,0,0,0.12);
+      }
+      .nav-link{color:#45403A!important;}
+      .nav-link:hover{background:rgba(0,0,0,0.06)!important;color:#1A1714!important;}
+    }
+  `;
 })();
 </script>
 </body>
